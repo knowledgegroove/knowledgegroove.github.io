@@ -1,17 +1,18 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  reactStrictMode: true,
   async rewrites() {
     return [
       {
-        source: '/stock-market-analyzer',
-        destination: 'https://stock-market-analyzer-sigma.vercel.app/',
+        source: '/academy',
+        destination: 'https://knowledgegroove-academy.vercel.app/academy',
       },
       {
-        source: '/stock-market-analyzer/:path*',
-        destination: 'https://stock-market-analyzer-sigma.vercel.app/:path*',
+        source: '/academy/:path*',
+        destination: 'https://knowledgegroove-academy.vercel.app/academy/:path*',
       },
-    ]
+    ];
   },
 };
 
