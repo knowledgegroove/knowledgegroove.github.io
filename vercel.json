@@ -1,0 +1,12 @@
+{
+    "rewrites": [
+        {
+            "source": "/academy",
+            "destination": "https://knowledgegroove-academy.vercel.app/academy"
+        },
+        {
+            "source": "/academy/:path*",
+            "destination": "https://knowledgegroove-academy.vercel.app/academy/:path*"
+        }
+    ]
+}
