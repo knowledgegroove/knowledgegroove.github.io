@@ -1,0 +1,175 @@
+.container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: #030014;
+    z-index: 9999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transition: opacity 0.8s ease-in-out;
+}
+
+.content {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* AI Core */
+.core {
+    width: 40px;
+    height: 40px;
+    background: radial-gradient(circle, #fff, #4f46e5);
+    border-radius: 50%;
+    box-shadow: 0 0 30px #4f46e5, 0 0 60px #8b5cf6;
+    z-index: 10;
+    animation: pulse 2s infinite;
+    transition: all 0.6s cubic-bezier(0.6, -0.28, 0.735, 0.045);
+}
+
+/* Rings */
+.ring {
+    position: absolute;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 1s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.ring1 {
+    width: 120px;
+    height: 120px;
+    animation: spin 4s linear infinite;
+    border-color: rgba(79, 70, 229, 0.3);
+}
+
+.ring2 {
+    width: 200px;
+    height: 200px;
+    animation: spin 6s linear infinite reverse;
+    border-color: rgba(139, 92, 246, 0.3);
+}
+
+.ring3 {
+    width: 280px;
+    height: 280px;
+    animation: spin 8s linear infinite;
+    border-color: rgba(236, 72, 153, 0.3);
+}
+
+/* Symbols */
+.symbol {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.8);
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-shadow: 0 0 10px currentColor;
+}
+
+/* Positioning symbols on rings */
+/* Ring 1: Math */
+.ring1 .symbol:nth-child(1) {
+    transform: rotate(0deg) translateY(-60px) rotate(0deg);
+}
+
+.ring1 .symbol:nth-child(2) {
+    transform: rotate(120deg) translateY(-60px) rotate(-120deg);
+}
+
+.ring1 .symbol:nth-child(3) {
+    transform: rotate(240deg) translateY(-60px) rotate(-240deg);
+}
+
+/* Ring 2: Finance */
+.ring2 .symbol:nth-child(1) {
+    transform: rotate(45deg) translateY(-100px) rotate(-45deg);
+    color: #34d399;
+}
+
+.ring2 .symbol:nth-child(2) {
+    transform: rotate(135deg) translateY(-100px) rotate(-135deg);
+    color: #34d399;
+}
+
+.ring2 .symbol:nth-child(3) {
+    transform: rotate(225deg) translateY(-100px) rotate(-225deg);
+    color: #34d399;
+}
+
+.ring2 .symbol:nth-child(4) {
+    transform: rotate(315deg) translateY(-100px) rotate(-315deg);
+    color: #34d399;
+}
+
+/* Ring 3: Communication/Tech */
+.ring3 .symbol:nth-child(1) {
+    transform: rotate(0deg) translateY(-140px) rotate(0deg);
+    color: #60a5fa;
+}
+
+.ring3 .symbol:nth-child(2) {
+    transform: rotate(90deg) translateY(-140px) rotate(-90deg);
+    color: #60a5fa;
+}
+
+.ring3 .symbol:nth-child(3) {
+    transform: rotate(180deg) translateY(-140px) rotate(-180deg);
+    color: #60a5fa;
+}
+
+.ring3 .symbol:nth-child(4) {
+    transform: rotate(270deg) translateY(-140px) rotate(-270deg);
+    color: #60a5fa;
+}
+
+/* Animations */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.2);
+        opacity: 0.8;
+    }
+}
+
+/* Collapse/Expand Animation (triggered by class) */
+.collapsing {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.collapsing .ring {
+    transform: scale(4);
+    opacity: 0;
+    border-width: 0;
+}
+
+.collapsing .core {
+    transform: scale(0);
+    opacity: 0;
+}

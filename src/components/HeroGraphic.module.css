@@ -1,0 +1,213 @@
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    perspective: 1000px;
+}
+
+.content {
+    position: relative;
+    width: 300px;
+    height: 300px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+    animation: float 6s ease-in-out infinite;
+}
+
+/* AI Core */
+.core {
+    width: 60px;
+    height: 60px;
+    background: radial-gradient(circle at 30% 30%, #fff, #4f46e5);
+    border-radius: 50%;
+    box-shadow:
+        0 0 30px rgba(79, 70, 229, 0.6),
+        0 0 60px rgba(139, 92, 246, 0.4),
+        inset 0 0 20px rgba(255, 255, 255, 0.5);
+    z-index: 10;
+    animation: pulse 3s infinite ease-in-out;
+    position: relative;
+}
+
+.core::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border-radius: 50%;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    animation: spin 10s linear infinite;
+}
+
+/* Rings */
+.ring {
+    position: absolute;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transform-style: preserve-3d;
+}
+
+.ring1 {
+    width: 180px;
+    height: 180px;
+    animation: rotate1 15s linear infinite;
+    border-color: rgba(79, 70, 229, 0.2);
+    box-shadow: 0 0 15px rgba(79, 70, 229, 0.1);
+}
+
+.ring2 {
+    width: 280px;
+    height: 280px;
+    animation: rotate2 20s linear infinite;
+    border-color: rgba(139, 92, 246, 0.2);
+    box-shadow: 0 0 15px rgba(139, 92, 246, 0.1);
+}
+
+.ring3 {
+    width: 380px;
+    height: 380px;
+    animation: rotate3 25s linear infinite;
+    border-color: rgba(236, 72, 153, 0.2);
+    box-shadow: 0 0 15px rgba(236, 72, 153, 0.1);
+}
+
+/* Symbols */
+.symbol {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.9);
+    font-family: var(--font-geist-mono), monospace;
+    font-weight: bold;
+    font-size: 1.2rem;
+    text-shadow: 0 0 10px currentColor;
+    backface-visibility: hidden;
+}
+
+/* Positioning symbols on rings */
+/* Ring 1: Math */
+.ring1 .symbol:nth-child(1) {
+    transform: rotate(0deg) translateY(-90px) rotate(0deg);
+}
+
+.ring1 .symbol:nth-child(2) {
+    transform: rotate(120deg) translateY(-90px) rotate(-120deg);
+}
+
+.ring1 .symbol:nth-child(3) {
+    transform: rotate(240deg) translateY(-90px) rotate(-240deg);
+}
+
+/* Ring 2: Finance */
+.ring2 .symbol:nth-child(1) {
+    transform: rotate(45deg) translateY(-140px) rotate(-45deg);
+    color: #34d399;
+}
+
+.ring2 .symbol:nth-child(2) {
+    transform: rotate(135deg) translateY(-140px) rotate(-135deg);
+    color: #34d399;
+}
+
+.ring2 .symbol:nth-child(3) {
+    transform: rotate(225deg) translateY(-140px) rotate(-225deg);
+    color: #34d399;
+}
+
+.ring2 .symbol:nth-child(4) {
+    transform: rotate(315deg) translateY(-140px) rotate(-315deg);
+    color: #34d399;
+}
+
+/* Ring 3: Communication/Tech */
+.ring3 .symbol:nth-child(1) {
+    transform: rotate(0deg) translateY(-190px) rotate(0deg);
+    color: #60a5fa;
+}
+
+.ring3 .symbol:nth-child(2) {
+    transform: rotate(90deg) translateY(-190px) rotate(-90deg);
+    color: #60a5fa;
+}
+
+.ring3 .symbol:nth-child(3) {
+    transform: rotate(180deg) translateY(-190px) rotate(-180deg);
+    color: #60a5fa;
+}
+
+.ring3 .symbol:nth-child(4) {
+    transform: rotate(270deg) translateY(-190px) rotate(-270deg);
+    color: #60a5fa;
+}
+
+/* Animations */
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-20px);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 30px rgba(79, 70, 229, 0.6);
+    }
+
+    50% {
+        transform: scale(1.1);
+        box-shadow: 0 0 50px rgba(79, 70, 229, 0.8);
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rotate1 {
+    from {
+        transform: rotate3d(1, 1, 1, 0deg);
+    }
+
+    to {
+        transform: rotate3d(1, 1, 1, 360deg);
+    }
+}
+
+@keyframes rotate2 {
+    from {
+        transform: rotate3d(1, -1, 0, 0deg);
+    }
+
+    to {
+        transform: rotate3d(1, -1, 0, 360deg);
+    }
+}
+
+@keyframes rotate3 {
+    from {
+        transform: rotate3d(0, 1, 1, 0deg);
+    }
+
+    to {
+        transform: rotate3d(0, 1, 1, 360deg);
+    }
+}
